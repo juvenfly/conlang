@@ -51,19 +51,20 @@ class Syllable(object):
 
 
 class Phoneme(object):
-    def __init__(self, is_voiced, place, manner):
+    def __init__(self, is_voiced, place, manner, symbol):
         self.is_voiced = is_voiced
         self.place = place
         self.manner = manner
+        self.symbol = symbol
 
 
 class Vowel(Phoneme):
-    def __init__(self, is_voiced, place, manner, is_long):
-        super().__init__(is_voiced, place, manner)
+    def __init__(self, is_voiced, place, manner, symbol, is_long):
+        super().__init__(is_voiced, place, manner, symbol)
         self.is_long = is_long
 
 
 class Consonant(Phoneme):
-    def __init__(self, is_voiced, place, manner):
-        super().__init__(is_voiced, place, manner)
+    def __init__(self, is_voiced, place, manner, symbol):
+        super().__init__(is_voiced, place, manner, symbol)
 
