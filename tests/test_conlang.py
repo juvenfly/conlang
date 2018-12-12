@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from conlang import Consonant, Vowel, Syllable, Phonology
+from src.conlang import Consonant, Vowel, Syllable, Phonology
 
 
 class TestPhonology(TestCase):
