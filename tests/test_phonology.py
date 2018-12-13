@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.exceptions import InvalidSyllable
+from src.exceptions import InvalidSyllable, InvalidPhoneme
 from src.phonology import Consonant, Vowel, Syllable, Phonology
 from src.lexicon import Word
 
@@ -33,17 +33,25 @@ class TestPhonology(TestCase):
         self.good_word = Word(syllables)
         self.invalid_word = Word(invalid_syllables)
 
+    def test_get_alphabet(self):
+        expected_alphabet = {'d', 'i', 't'}
+        self.assertEqual(self.phonology.alphabet, expected_alphabet)
+
     def test_add_phoneme(self):
         dee = Consonant(is_voiced=True, place='alveolar', manner='stop', symbol='d')
         tee = Consonant(is_voiced=False, place='alveolar', manner='stop', symbol='t')
+        eye = Vowel(is_voiced=True, place={'high', 'front'}, manner='tense', symbol='i', is_long=True)
 
         test_phonemes = {dee, tee}
 
         phonology = Phonology(test_phonemes, valid_syllables=None)
-        phonology.add_phoneme(dee)
-        phonology.add_phoneme(tee)
+
+        test_phonemes.add(eye)
+        phonology.add_phoneme(eye)
 
         self.assertEqual(test_phonemes, phonology.phonemes)
+
+        self.assertRaises(InvalidPhoneme, phonology.add_phoneme, eye)
 
     def test_is_valid_word(self):
         self.assertTrue(self.phonology.is_valid_word(self.good_word))

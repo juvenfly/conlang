@@ -1,8 +1,11 @@
 
 class Lexicon(object):
-    def __init__(self, phonology, word_list):
+    def __init__(self, phonology, word_list=None):
         self.phonology = phonology
-        self.word_list = set()
+        if word_list:
+            self.word_list = word_list
+        else:
+            self.word_list = set()
 
     def generate_lexicon(self):
         raise NotImplementedError

@@ -1,4 +1,4 @@
-from src.exceptions import InvalidSyllable
+from src.exceptions import InvalidSyllable, InvalidPhoneme
 
 
 class Phonology(object):
@@ -8,7 +8,14 @@ class Phonology(object):
     """
     def __init__(self, phonemes, valid_syllables):
         self.phonemes = phonemes
+        self.alphabet = self._get_alphabet()
         self.valid_syllables = valid_syllables
+
+    def _get_alphabet(self):
+        alphabet = set()
+        for phoneme in self.phonemes:
+            alphabet.add(phoneme.symbol)
+        return alphabet
 
     def is_valid_word(self, word):
         for syllable in word.syllables:
@@ -21,6 +28,8 @@ class Phonology(object):
         return syllable.structure in self.valid_syllables
 
     def add_phoneme(self, phoneme):
+        if phoneme.symbol in self.alphabet:
+            raise InvalidPhoneme(f"Phoneme {phoneme} invalid; symbol {phoneme.symbol} already in use.")
         self.phonemes.add(phoneme)
 
     def get_phonemes(self):
