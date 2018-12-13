@@ -1,3 +1,5 @@
+from src.exceptions import InvalidSyllable
+
 
 class Phonology(object):
     """
@@ -8,7 +10,14 @@ class Phonology(object):
         self.phonemes = phonemes
         self.valid_syllables = valid_syllables
 
-    def validate_syllable(self, syllable):
+    def is_valid_word(self, word):
+        for syllable in word.syllables:
+            if not self.is_valid_syllable(syllable):
+                raise InvalidSyllable(f"Word {word} contains invalid syllable {syllable.phonemes}")
+
+        return True
+
+    def is_valid_syllable(self, syllable):
         return syllable.structure in self.valid_syllables
 
     def add_phoneme(self, phoneme):
