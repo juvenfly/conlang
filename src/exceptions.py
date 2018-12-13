@@ -1,0 +1,3 @@
+
+class InvalidSyllable(Exception):
+    pass
