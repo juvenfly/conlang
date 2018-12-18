@@ -11,7 +11,7 @@ def main():
     phonology = build_phonology(phonemes)
 
     lexicon = Lexicon(phonology)
-    lexicon.generate_lexicon();;
+    lexicon.generate_lexicon()
 
 
 def build_phonemes():
