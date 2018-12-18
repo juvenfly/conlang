@@ -54,5 +54,6 @@ def build_phonology(phonemes):
 
     return Phonology(phonemes, valid_syllable_structures)
 
+
 if __name__ == "__main__":
     main()
