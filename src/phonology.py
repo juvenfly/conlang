@@ -80,9 +80,11 @@ class Vowel(Phoneme):
     def __init__(self, is_voiced, place, manner, symbol, is_long):
         super().__init__(is_voiced, place, manner, symbol)
         self.is_long = is_long
+        self.type = "V"
 
 
 class Consonant(Phoneme):
     def __init__(self, is_voiced, place, manner, symbol):
         super().__init__(is_voiced, place, manner, symbol)
+        self.type = "C"
 

@@ -13,6 +13,8 @@ def main():
     lexicon = Lexicon(phonology)
     lexicon.generate_lexicon()
 
+    print(lexicon.word_list)
+
 
 def build_phonemes():
 
