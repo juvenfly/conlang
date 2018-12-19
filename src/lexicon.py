@@ -1,6 +1,6 @@
 from random import sample, randint
 
-from src.phonology import Consonant, Vowel, Syllable
+from src.phonology import Syllable
 
 
 class Lexicon(object):
@@ -40,13 +40,19 @@ class Lexicon(object):
         return syllable
 
     def pick_syllable_structure(self):
-        return sample(self.phonology.valid_syllables, 1)
+        return sample(self.phonology.valid_syllables, 1)[0]
 
     def fill_syllable_structure(self, syllable_structure):
+        """
+        Fills out syllables with random consonants & vowels.
+        :param syllable_structure: [("C", "V"), ("V", ) ... ] The syllable structure of the word as a list of tuples.
+        :return: syllables as a set of phonemes
+        """
         syllable = set()
 
-        for i, phoneme_type in enumerate(syllable_structure):
-            phoneme = self.get_random_phoneme(phoneme_type[i])
+        for phoneme_type in syllable_structure:
+            print(phoneme_type, syllable_structure)
+            phoneme = self.get_random_phoneme(phoneme_type)
             syllable.add(phoneme)
 
         return syllable
