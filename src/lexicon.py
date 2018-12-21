@@ -11,10 +11,10 @@ class Lexicon(object):
         else:
             self.word_list = []
 
-    def generate_lexicon(self):
+    def generate_lexicon(self, size=100):
         word_list = []
 
-        for i in range(100):
+        for i in range(size):
             new_word = self.generate_word()
             print(f'NEW WORD: {new_word.surface_representation}')
             if new_word.surface_representation in word_list:
