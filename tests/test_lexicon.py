@@ -17,8 +17,13 @@ class TestWord(TestCase):
         ]
         self.test_word = Word(syllables)
 
-    def test_print_word(self):
-        expected_word = 'dittit'
-        actual_word = self.test_word.get_word()
+    def test_get_surface_representation(self):
+        expected_surface_repr = 'dittit'
+        actual_surface_repr = self.test_word.surface_representation
 
-        self.assertEqual(expected_word, actual_word)
+        self.assertEqual(expected_surface_repr, actual_surface_repr)
+
+    def test_get_underlying_representation(self):
+        underlying_repr = self.test_word.underlying_representation
+        self.assertTrue(isinstance(underlying_repr, tuple))
+        self.assertEqual(len(underlying_repr), 6)
