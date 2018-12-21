@@ -9,17 +9,20 @@ class Lexicon(object):
         if word_list:
             self.word_list = word_list
         else:
-            self.word_list = set()
+            self.word_list = []
 
     def generate_lexicon(self):
-        word_list = set()
+        word_list = []
 
         for i in range(100):
             new_word = self.generate_word()
             print(f'NEW WORD: {new_word.surface_representation}')
-            if new_word in word_list:
+            if new_word.surface_representation in word_list:
                 i -= 1
-            word_list.add(new_word)
+            else:
+                word_list.append(new_word.surface_representation)
+
+        self.word_list = word_list
 
     def generate_word(self):
         syllable_count = randint(1, 5)
@@ -48,12 +51,11 @@ class Lexicon(object):
         :param syllable_structure: [("C", "V"), ("V", ) ... ] The syllable structure of the word as a list of tuples.
         :return: syllables as a set of phonemes
         """
-        syllable = set()
+        syllable = []
 
         for phoneme_type in syllable_structure:
-            print(phoneme_type, syllable_structure)
             phoneme = self.get_random_phoneme(phoneme_type)
-            syllable.add(phoneme)
+            syllable.append(phoneme)
 
         return syllable
 
