@@ -14,12 +14,11 @@ class Lexicon(object):
     def generate_lexicon(self, size=100):
         word_list = []
 
-        for i in range(size):
+        i = 0
+        while i < size:
             new_word = self.generate_word()
-            print(f'NEW WORD: {new_word.surface_representation}')
-            if new_word.surface_representation in word_list:
-                i -= 1
-            else:
+            if new_word.surface_representation not in word_list:
+                i += 1
                 word_list.append(new_word.surface_representation)
 
         self.word_list = word_list
