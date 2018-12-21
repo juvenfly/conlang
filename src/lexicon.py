@@ -97,10 +97,3 @@ class Word(object):
             underlying_representation += syllable.phonemes
 
         return tuple(underlying_representation)
-
-    def get_word(self):
-        result = []
-        for phoneme in self.underlying_representation:
-            result += phoneme.symbol
-
-        return ''.join(result)
