@@ -31,6 +31,7 @@ class Phonology(object):
         if phoneme.symbol in self.alphabet:
             raise InvalidPhoneme(f"Phoneme {phoneme} invalid; symbol {phoneme.symbol} already in use.")
         self.phonemes.add(phoneme)
+        self.alphabet = self._get_alphabet()
 
     def get_phonemes(self):
         for phoneme in self.phonemes:
